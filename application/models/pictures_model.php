@@ -106,13 +106,31 @@ class Pictures_model extends CI_Model {
 		}*/
 	}
 	function add_comment($_POST){
-		if(isset($_POST['comment'])){
+		if(isset($_POST['text'])){
+			print_r($_POST);
+			$t = getdate();
+			$_POST['date'] = $t['mday'].' '.$t['month'].' '.substr($t['year'], 2,2).' || '.$t['hours'].':'.$t['minutes'];
 			if(isset ($_COOKIE))
 				$_POST['name'] = $_COOKIE['login'];
 			else
 				$_POST['name'] = 'Гость';		
 			$this->db->insert('comments',$_POST);
 		}
+	}
+	function get_comments($id, $data){
+		foreach($data['menu_items'] as $item){
+			if ($item['id'] == $id){
+			$artist = $item['item'];
+		}}
+		$query = $this->db->get('comments');
+		$array =  $query->result_array();	
+		foreach($array as $key => $comment){
+			if($comment['artist'] == $artist)
+				$comments[] = $comment;
+		}
+		if(isset($links))
+			return $comments;
+		
 	}
 }
 

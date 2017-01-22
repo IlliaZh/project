@@ -36,6 +36,7 @@ class First extends CI_Controller {
 				$data['l'] = $id;
 				$data['pictures'] = $this->pictures_model->get_pictures_by_letter($id);
 			}
+		$data['comments'] = $this->pictures_model->get_comments($id,$data);
 		$this->load->view('gallery_view', $data);
 	}
 	function addition() { 
@@ -77,8 +78,8 @@ class First extends CI_Controller {
 	
 	function account_added() {
 	/*	$_POST['password'] = md5($_POST['password']); */
-		$this->load->model('account_added_model');
-		$this->account_added_model->det_acc($_POST);
+		$this->load->model('accounts_model');
+		$this->accounts_model->det_acc($_POST);
 		$data['menu_items'] = $this->menu_items_model->get_menu_items();
 		$this->load->view('authorisation_view',$data);
 	}
@@ -135,6 +136,6 @@ class First extends CI_Controller {
 		print_r ($v);
 	}
 	$t = getdate();
-	echo '<p>'.$t['hours'].':'.$t['minutes'].'</p>';
+	echo '<p>'.$t['mday'].' '.$t['month'].' '.substr($t['year'], 2,2).' || '.$t['hours'].':'.$t['minutes'].'</p>';
 	}
 }	

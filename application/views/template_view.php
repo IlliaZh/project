@@ -1,5 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
+ini_set('display_errors',1);
+error_reporting(E_ALL);
 ?><!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,6 +10,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<link rel="stylesheet" type="text/css" href="http://ci.ru/template_style.css">
 </head>
 <body>
+
 <script type="text/javascript" src="http://ci.ru/jquery-3.1.1.js" ></script>
 <script type="text/javascript" src="http://ci.ru/script.js" ></script>
 

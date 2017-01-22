@@ -27,15 +27,18 @@ if($id > 0){
 <div class="comments">
 	<h4>Ваш комментарий:</h4>
 	<form method="post" action="/<?='index.php/first/gallery/'.$id?>">
-		<input type="hidden"  name="author" value="<?=$l?>">
-		<textarea rows="4" cols="40" name="comment" placeholder="Ваш Комментарий"></textarea>
+		<input type="hidden"  name="artist" value="<?=$l?>">
+		<textarea rows="4" cols="40" name="text" placeholder="Ваш Комментарий"></textarea>
 		<input type="submit" value="Добавить комментарий">
 	</form>
 </div>
-<div class="comments">
 <h4>Комментарии:</h4>
-
+<?php /* foreach ($comments as $comment){ ?>
+<div class="comments">
+	<p><b><?=$comment['name']?> </b> <?=$comment['date']?></p>
+	<p><?=$comment['text']?></p>
 </div>
+<?php } */ print_r($comments); ?>
 
 
 <?php  if (is_array($pictures)){
