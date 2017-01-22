@@ -27,6 +27,7 @@ class First extends CI_Controller {
 	function gallery($id) {
 		$data['menu_items'] = $this->menu_items_model->get_menu_items();	
 		$this->load->model('pictures_model');
+		$this->pictures_model->add_comment($_POST);
 		$data['id'] = $id;
 			if($id > 0){
 				$data['pictures'] = $this->pictures_model->get_pictures_by_name($id,$data);	
@@ -35,7 +36,7 @@ class First extends CI_Controller {
 				$data['l'] = $id;
 				$data['pictures'] = $this->pictures_model->get_pictures_by_letter($id);
 			}
-		$this->load->view('search_art_view', $data);
+		$this->load->view('gallery_view', $data);
 	}
 	function addition() { 
 		$data['menu_items'] = $this->menu_items_model->get_menu_items();
@@ -62,8 +63,9 @@ class First extends CI_Controller {
 		$data['title'] = $_POST['title'];
 		$this->load->model('pictures_model');	
 		
-		if($this->pictures_model->add_picture($data,$_FILES))
-			$this->menu_items_model->add_menu_item($data1);		
+		if(!($this->pictures_model->add_picture($data,$_FILES)))
+			$this->menu_items_model->add_menu_item($data1);	
+		else echo $this->pictures_model->add_picture($data,$_FILES);
 	}
 	
 	

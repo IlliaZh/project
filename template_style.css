@@ -186,7 +186,7 @@ padding: 0;
 		font-size: 130%;
 		display: block;
 	}
-	#comments {
+	.comments {
 		height: auto;
 		font-size:1em;
 		background-color: lightgoldenrodyellow;
@@ -197,7 +197,7 @@ padding: 0;
 		border: 1px solid #D0D0D0;
 		box-shadow: 0 0 8px #D0D0D0;		
 	}
-	#comments [type="text"] {
+	.comments [type="text"],.comments [type="submit"] {
 		margin: 1% 0 1% 2%;
 
 	}
@@ -400,6 +400,7 @@ padding: 0;
 	cursor: pointer;
 
 }
+
 #add_picture #close {
 	width: 2.5em;
 	height: 2.5em;
@@ -422,10 +423,14 @@ padding: 0;
 	height: 24em;
 	background-color: lightgoldenrodyellow;
 	border-radius: 2em;
-	text-align: center;
 	padding-top: 4em;
+	
 }
-/* Footer */
+#add_picture *{
+	margin:1%;
+	font-size: 120%;
+}
+	/* Footer */
 footer {
 	width: 100%;
 	height: 7em;

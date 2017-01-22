@@ -26,7 +26,7 @@ class Pictures_model extends CI_Model {
 				move_uploaded_file($_FILES['image']['tmp_name'], 'D:\home\ci.ru\www\img\\'.$_FILES['image']['name']);
 				$this->db->insert('pictures',$data);
 				header("Location:http://ci.ru/index.php/first/personal_page");
-				return TRUE;
+				return FALSE;
 		}else{
 			switch($_FILES['image']['error']){
 				case 1:$message = 'Размер принятого файла превысил максимально допустимый размер, который задан директивой upload_max_filesize конфигурационного файла php.ini.';
@@ -48,7 +48,7 @@ class Pictures_model extends CI_Model {
 				echo '<h1>ОШИБКА:</h1><h1>'.$message.'</h1>';
 					
 			}
-			return FALSE;
+			return $message;
 		}
 		
 	}
@@ -101,47 +101,19 @@ class Pictures_model extends CI_Model {
 		}else{
 			$result = 'Не найдено';
 			return $result;
-			
-			foreach($menu_items as $item){
-			if ($item['id'] == $id){
-			$author = $item['item'];	
-			echo '<h1><b>'.$item['item'].'</b></h1>';
 			}}
 			
 		}*/
 	}
-	
-		/*function translit ($string) {
-		$converter = array(
-			'а' => 'a',   'б' => 'b',   'в' => 'v',
-			'г' => 'g',   'д' => 'd',   'е' => 'e',
-			'ё' => 'e',   'ж' => 'zh',  'з' => 'z',
-			'и' => 'i',   'й' => 'y',   'к' => 'k',
-			'л' => 'l',   'м' => 'm',   'н' => 'n',
-			'о' => 'o',   'п' => 'p',   'р' => 'r',
-			'с' => 's',   'т' => 't',   'у' => 'u',
-			'ф' => 'f',   'х' => 'h',   'ц' => 'c',
-			'ч' => 'ch',  'ш' => 'sh',  'щ' => 'sch',   
-			'ы' => 'y',
-			'э' => 'e',   'ю' => 'yu',  'я' => 'ya',
-			
-
-			
-			'А' => 'A',   'Б' => 'B',   'В' => 'V',
-			'Г' => 'G',   'Д' => 'D',   'Е' => 'E',
-			'Ё' => 'E',   'Ж' => 'Zh',  'З' => 'Z',
-			'И' => 'I',   'Й' => 'Y',   'К' => 'K',
-			'Л' => 'L',   'М' => 'M',   'Н' => 'N',
-			'О' => 'O',   'П' => 'P',   'Р' => 'R',
-			'С' => 'S',   'Т' => 'T',   'У' => 'U',
-			'Ф' => 'F',   'Х' => 'H',   'Ц' => 'C',
-			'Ч' => 'Ch',  'Ш' => 'Sh',  'Щ' => 'Sch',
-			'Ы' => 'Y',	  'Э' => 'E',   'Ю' => 'Yu',  
-			'Я' => 'Ya',
-		);
-		return strtr($string, $converter);
-	}*/
-	
+	function add_comment($_POST){
+		if(isset($_POST['comment'])){
+			if(isset ($_COOKIE))
+				$_POST['name'] = $_COOKIE['login'];
+			else
+				$_POST['name'] = 'Гость';		
+			$this->db->insert('comments',$_POST);
+		}
+	}
 }
 
 ?>

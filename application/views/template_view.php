@@ -53,6 +53,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <input type="checkbox" id="button"></input>	
 	<?php	foreach($menu_items as $key => $item) {$sections[] = $item['section'];}
 			$sections_unique = array_unique($sections); 
+			rsort($sections_unique);
 			
 				
 				foreach($sections_unique as $key => $item){ 
@@ -92,7 +93,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </div>
 <script language="JavaScript" type="text/javascript" >
 	function add_picture(){
-	$("div.pic").html('<div id="add_picture"><div id="close" onclick="close_add_picture()" ></div><p>Добавить картину</p><form method="post" action="http://ci.ru/index.php/first/new_picture" enctype="multipart/form-data" > <input type="text" name="author" placeholder="Автор"><input type="text" name="name" placeholder="Название картины"><input type="text" name="title" placeholder="Описание картины"><input type="submit" value="Добавить"> <input type="hidden" name="MAX_FILE_SIZE" value="10000000"><input type="file" name="image" accept="image/*"></form></div>');
+	$("div.pic").html('<div id="add_picture"><div id="close" onclick="close_add_picture()" ></div><p>Добавить картину</p><form method="post" action="http://ci.ru/index.php/first/new_picture" enctype="multipart/form-data" > <input type="text" name="author" placeholder="Автор"><input type="text" name="name" placeholder="Название картины"><input type="text" name="title" placeholder="Описание картины"><input type="hidden" name="MAX_FILE_SIZE" value="10000000"><input type="file" name="image" accept="image/*"><br><input type="submit" value="Добавить"> </form></div>');
 	}
 	function close_add_picture (){
 		$("div.pic").html('');
